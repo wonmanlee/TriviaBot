@@ -8,4 +8,7 @@
   </tr>
   <% end %>
 </table>
-
+<%= form_tag(answers_path, method: "POST") do %>
+  <input type="text" class="form-control" placeholder="Input your answer">
+  <%= submit_tag("Submit Answer") %>
+<% end %>
