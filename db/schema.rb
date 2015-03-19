@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20150319221010) do
   create_table "answers", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "question_id"
+    t.boolean  "correct"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -50,7 +51,6 @@ ActiveRecord::Schema.define(version: 20150319221010) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username"
-    t.integer  "score",                  default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

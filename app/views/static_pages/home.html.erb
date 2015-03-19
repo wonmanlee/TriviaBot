@@ -1,1 +1,11 @@
-<h1> This is home </h1>
+<h1>Select a category</h1>
+<table>
+  <% @categories.each_slice(6) do |cat| %>
+  <tr>
+    <% cat.each do |c| %>
+    <td><%= c %></td>
+    <% end %>
+  </tr>
+  <% end %>
+</table>
+

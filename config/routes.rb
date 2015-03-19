@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   get '/'            => 'static_pages#home',        as: 'home'
   get '/leaderboard' => 'static_pages#leaderboard', as: 'leaderboard'
 
+  resources :answers, only: [:index, :create, :show]
+
   devise_for :users
 end
