@@ -1,7 +1,8 @@
 class AnswersController < ApplicationController
   def create
     q = Question.find(params[:question_id])
-    if params["answer"] == q.answer
+    # TODO fix answer handling
+    if params["answer"].downcase == q.answer.downcase
       a = current_user.answers.create(question_id: q.id, correct: true)
     else
       a = current_user.answers.create(question_id: q.id, correct: false)
