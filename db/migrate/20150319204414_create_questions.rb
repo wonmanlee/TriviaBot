@@ -8,7 +8,6 @@ class CreateQuestions < ActiveRecord::Migration
       t.string  :category_title
       t.integer :category_id
       t.date    :airdate
-      t.boolean :random, default: false
 
       t.timestamps null: false
     end

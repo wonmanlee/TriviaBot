@@ -5,6 +5,7 @@ class CreateAnswers < ActiveRecord::Migration
       t.belongs_to :question, index: true
       
       t.boolean :correct
+      t.boolean :random, default: false
 
       t.timestamps null: false
     end

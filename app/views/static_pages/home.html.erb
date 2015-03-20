@@ -1,5 +1,5 @@
 <h1>Select a category</h1>
-<table>
+<table class="table table-bordered">
   <% @categories.each_slice(6) do |cat| %>
   <tr>
     <% cat.each do |c| %>
@@ -7,4 +7,13 @@
     <% end %>
   </tr>
   <% end %>
+  <tr>
+    <td>
+      <%= form_tag(questions_path, method: "post") do %>
+        <input type="hidden" name="random">
+        <%= submit_tag("Random") %>
+      <% end %>
+    </td>
+  </tr>
+ 
 </table>

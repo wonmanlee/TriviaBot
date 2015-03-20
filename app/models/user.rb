@@ -29,4 +29,6 @@ class User < ActiveRecord::Base
   def wrong_answers
     self.answers.where(correct: false).pluck(:question_id)
   end
+
+  # TODO tally random scores ~500 pts
 end

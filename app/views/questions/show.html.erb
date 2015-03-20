@@ -1,0 +1,8 @@
+<h1>For <%= @value %> in category <%= @category_title %>:</h1>
+<p><%= @question %><p>
+
+<%= form_tag(question_answers_path(params[:id]), method: "POST") do %>
+  <input type="text" class="form-control" name="answer" placeholder="Input your answer">
+  <%= submit_tag("Submit Answer") %>
+<% end %>
+

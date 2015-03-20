@@ -1,0 +1,8 @@
+<p>Question: <%= @q.question %></p>
+<p>The answer was: <%= @q.answer %></p>
+<p>Your total score is now: <%= @score %></p>
+
+      <%= form_tag(questions_path, method: "post") do %>
+        <input type="hidden" name="random">
+        <%= submit_tag("Random") %>
+      <% end %>
