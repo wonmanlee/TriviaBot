@@ -7,9 +7,12 @@ class User < ActiveRecord::Base
   has_many :answers
   has_many :questions, through: :answers
 
-  def fetch_leaderboard(number=10)
-    leaders = []
-    
+  def self.fetch_leaderboard(number=10)
+    leaderboard = {}
+    User.all.each do |u|
+      leaderboard["#{u.username}"] = u.total_score
+    end
+    leaderboard.sort { |x, y| y[1] <=> x[1] }.first(number)
   end
 
   def answer_question q_id
