@@ -1,0 +1,21 @@
+<div class="jumbotron">
+  <h1>Welcome to Jeopardy</h1>
+</div>
+<% @questions.each_slice(4) do |qset| %>
+<div class="row">
+  <% qset.each do |q| %>
+  
+    <div class="col-xs-6 col-md-3">
+      <div class="panel status panel-info">
+        <div class="panel-heading">
+          <h1 class="panel-title text-center"><%= link_to "#{q.value}", question_path(q) %></h1>
+        </div>
+        <div class="panel-body text-center">                        
+          <strong><%= link_to "#{q.category_title.titleize}", question_path(q) %></strong>
+        </div>
+      </div>
+    </div>
+  
+  <% end %>
+</div>
+<% end %>
