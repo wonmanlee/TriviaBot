@@ -7,6 +7,11 @@ class User < ActiveRecord::Base
   has_many :answers
   has_many :questions, through: :answers
 
+  def fetch_leaderboard(number=10)
+    leaders = []
+    
+  end
+
   def answer_question q_id
     self.answers.where(question_id: q_id).first_or_create!
   end

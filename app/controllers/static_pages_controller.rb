@@ -1,6 +1,8 @@
 class StaticPagesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:home]
+
   def home
-    @categories = Question.all.pluck(:category_title).uniq
+    @leaderboard = User.fetch_leaderboard(10)
     
   end
 
