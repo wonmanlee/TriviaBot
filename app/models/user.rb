@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
     self.answers.where(question_id: q_id).first_or_create!
   end
 
+  def answered?(q_id)
+    self.answers.pluck(:question_id).include?(q_id.to_i)
+  end
+
   def total_score
     total_score = 0
     correct_answers.each do |q|

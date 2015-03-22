@@ -23,7 +23,6 @@ class QuestionsController < ApplicationController
     @question = q.question
     @value = q.value
     @category_title = q.category_title
-    @question_id = q.question_id
   end
 
 private

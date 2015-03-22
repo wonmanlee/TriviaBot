@@ -8,9 +8,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
   <div class="container">
-
     <!-- Static navbar -->
     <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -27,22 +25,11 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href=<%= home_path %>>Home</a></li>
             <li><a href=<%= questions_path %>>Select a Question</a></li>
-            <li><a href="#">Contact</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
+            <li><a href="#">Leaderboard</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <% if current_user %>
+            <li><a href="#"><strong><%= "Your current score: #{current_user.total_score}" %></strong></a></li>
             <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
             <% else %>
             <li><a href=<%= new_user_session_path %>>Sign in</a></li>
@@ -52,6 +39,9 @@
         </div><!--/.nav-collapse -->
       </div><!--/.container-fluid -->
     </nav>
+    <% flash.each do |key, value| %>
+    <div class="<%= flash_class(key) %>"><%= value %></div>
+    <% end %>
 
 <%= yield %>
   </div>
