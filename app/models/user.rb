@@ -3,16 +3,18 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  
+  paginates_per 10
 
   has_many :answers
   has_many :questions, through: :answers
 
-  def self.fetch_leaderboard(number=10)
+  def self.fetch_leaderboard
     leaderboard = {}
     User.all.each do |u|
       leaderboard["#{u.username}"] = u.total_score
     end
-    leaderboard.sort { |x, y| y[1] <=> x[1] }.first(number)
+    leaderboard.sort { |x, y| y[1] <=> x[1] }
   end
 
   def answer_question q_id
@@ -20,7 +22,11 @@ class User < ActiveRecord::Base
   end
 
   def answered?(q_id)
-    self.answers.pluck(:question_id).include?(q_id.to_i)
+    self.answered.include?(q_id.to_i)
+  end
+
+  def answered
+    self.answers.pluck(:question_id)
   end
 
   def total_score

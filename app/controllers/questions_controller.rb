@@ -1,11 +1,6 @@
 class QuestionsController < ApplicationController
   def index
-    @questions = []
-    qids = Question.all.pluck(:category_id).uniq.shuffle.first(20)
-    qids.each do |qid|
-      @questions << Question.where(category_id: qid).sample
-    end
-    @questions.sort! { |x, y| x.value <=> y.value }
+    @questions = Question.generate_board(current_user.id)
   end
 
   def create

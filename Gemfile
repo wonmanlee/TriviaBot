@@ -40,12 +40,14 @@ group :development, :test do
   gem 'spring'
 end
 
-
 gem 'devise'
 gem 'figaro'
 gem 'activesupport'
 gem 'slim-rails'
 gem 'httparty'
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
+
 group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
