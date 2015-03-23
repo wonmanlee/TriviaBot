@@ -47,6 +47,8 @@ gem 'slim-rails'
 gem 'httparty'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
+gem 'levenshtein-ffi'
+gem 'levenshtein'
 
 group :development, :test do
   gem 'better_errors'
