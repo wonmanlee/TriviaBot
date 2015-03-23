@@ -18,6 +18,7 @@ class QuestionsController < ApplicationController
     @question = q.question
     @value = q.value
     @category_title = q.category_title
+    @airdate = q.airdate
   end
 
 private
