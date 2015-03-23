@@ -6,6 +6,9 @@ class StaticPagesController < ApplicationController
   end
 
   def leaderboard
-    @users = User.page(params[:page])
+    User.find_each do |u|
+      u.update(score: u.total_score)
+    end
+    @users = User.order(score: :desc).page(params[:page])
   end
 end

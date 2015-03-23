@@ -5,7 +5,7 @@ class AnswersController < ApplicationController
     else
       q = Question.find(params[:question_id])
       # TODO fix answer handling, threshold is 3
-      if Levenshtein.distance(params["answer"].downcase, q.answer.downcase) < 3
+      if Levenshtein.distance(params["answer"].downcase, q.answer.downcase) <= 3
         flash["success"] = "Correct. The answer was '#{q.answer}'. You gained #{q.value} points."
         a = current_user.answers.create(question_id: q.id, correct: true)
       else
