@@ -5,15 +5,11 @@
 
   <table class="table table-hover table-bordered table-condensed">
     <tr>
-      <th>Rank</th>
       <th>Username</th>
       <th>Score</th>
     </tr>
-    <% i = 0 %>
     <% @users.each do |u| %>
     <tr>
-      <% i += 1 %>
-      <td><%= i %></td>
       <td><%= u.email %></td>
       <td><%= u.total_score %></td>
     </tr>
