@@ -12,7 +12,7 @@
     <% if params[:page].nil? %>
       <% i = 0 %>
     <% else %>
-      <% i = 10 * params[:page] %>
+      <% i = 10 * (params[:page].to_i - 10) %>
     <% end %>
     <% @users.each do |u| %>
       <% if current_user.id == u.id %>
