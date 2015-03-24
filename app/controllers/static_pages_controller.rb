@@ -9,6 +9,6 @@ class StaticPagesController < ApplicationController
     User.find_each do |u|
       u.update(score: u.total_score)
     end
-    User.order(score: :desc).page(params[:page])
+    @users = User.order(score: :desc).page(params[:page])
   end
 end
