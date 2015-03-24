@@ -54,4 +54,11 @@ class Question < ActiveRecord::Base
     end
   end
 
+  def self.remove_html_from_answers
+    questions = Question.where("answer LIKE (?)", "%<i>%")
+    questions.each do |q|
+      q.update(answer: q.answer.gsub("<i>", ""))
+      q.update(answer: q.answer.gsub!("</i>", ""))
+    end
+  end
 end
